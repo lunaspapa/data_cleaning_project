@@ -1,5 +1,6 @@
 # Imports
 import numpy as np
+import calendar
 from datetime import datetime
 import glob
 import json
@@ -25,14 +26,10 @@ for csv in CSV:
   df = pandas.read_csv(csv)
   dataframes.append(df)
 
+# Months object to convert Year to Integer
+
+month_to_num = {name: num for num, name in enumerate(calendar.month_abbr) if num}
+
 dataframes[0].head()
 
-for df in dataframes:
-  df['show_id'] = pandas.Series(df['show_id'], dtype="string")
-
-  df['date_added'] = df['date_added'].astype('str')
-  date_pieces = (df['date_added'].str.split(' '))
-
-  # df['Year'] = date_pieces.str[3].astype(int)
-  # df['Day'] = date_pieces.str[1].astype(int)
-  # df['Month'] = date_pieces.str[0].astype(int)
+print(CSV)
