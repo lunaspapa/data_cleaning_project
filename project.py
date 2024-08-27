@@ -28,4 +28,4 @@ for csv in CSV:
   df = pandas.read_csv(csv, encoding="ISO-8859-1")
   dataframes.append(df)
 
-print(dataframes[0].dtypes)
+print(dataframes)
