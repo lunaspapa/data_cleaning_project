@@ -13,23 +13,19 @@ import re
 import seaborn as sns
 import six
 
-sns.set()
+sns.set_theme()
 pandas.set_option('display.max_columns', None)
 pandas.set_option('display.max_rows', None)
 pandas.options.mode.chained_assignment = None
 
 CSV = [i for i in glob.glob('*.{}'.format('csv'))]
 
+print(CSV)
+
 # Reading CSV
 dataframes = [] # list to store each frame
 for csv in CSV:
-  df = pandas.read_csv(csv)
+  df = pandas.read_csv(csv, encoding="ISO-8859-1")
   dataframes.append(df)
 
-# Months object to convert Year to Integer
-
-month_to_num = {name: num for num, name in enumerate(calendar.month_abbr) if num}
-
-dataframes[0].head()
-
-print(CSV)
+print(dataframes[0].dtypes)
